@@ -1,0 +1,59 @@
+#include<stdio.h>
+#include<string.h>
+double a[1020],f[1020];
+int n,u[1020],d[1020];
+int i,l,r,k,ans;
+int main()
+{
+	scanf("%d",&n);
+	for(i=1;i<=n;i++)
+		scanf("%lf",&a[i]);
+	k=0;
+	memset(f,0,sizeof(f));
+	for(i=1;i<=n;i++)
+	{
+		if(f[k]<a[i])
+			f[++k]=a[i];
+		else
+		{
+			l=1;
+			r=k;
+			while(l!=r)
+			{
+				if(f[(l+r)/2]<a[i])
+					l=(l+r)/2+1;
+				else
+					r=(l+r)/2;
+			}
+			f[l]=a[i];
+		}
+		u[i]=k;
+	}
+	k=0;
+	memset(f,0,sizeof(f));
+	for(i=n;i>0;i--)
+	{
+		if(f[k]<a[i])
+			f[++k]=a[i];
+		else
+		{
+			l=1;
+			r=k;
+			while(l!=r)
+			{
+				if(f[(l+r)/2]<a[i])
+					l=(l+r)/2+1;
+				else
+					r=(l+r)/2;
+			}
+			f[r]=a[i];
+		}
+		d[i]=k;
+	}
+	ans=0;
+	for(i=1;i<n;i++)
+		if(ans<u[i]+d[i+1])
+			ans=u[i]+d[i+1];
+	printf("%d",n-ans);
+	return 0;
+}
