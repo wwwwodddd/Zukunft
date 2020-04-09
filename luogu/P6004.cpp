@@ -1,10 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 int n, m;
+pair<int, pair<int, int> > a[100020];
 int p[100020];
-int x[100020];
-int y[100020];
-int z[100020];
 int f[100020];
 int F(int x)
 {
@@ -12,31 +10,7 @@ int F(int x)
 }
 void U(int x, int y)
 {
-	x = F(x);
-	y = F(y);
-	f[x] = y;
-}
-bool ok(int M)
-{
-	for (int i = 1; i <= n; i++)
-	{
-		f[i] = i;
-	}
-	for (int i = 0; i < m; i++)
-	{
-		if (z[i] >= M)
-		{
-			U(x[i], y[i]);
-		}
-	}
-	for (int i = 1; i <= n; i++)
-	{
-		if (F(i) != F(p[i]))
-		{
-			return false;
-		}
-	}
-	return true;
+	f[F(x)] = F(y);
 }
 int main()
 {
@@ -44,29 +18,22 @@ int main()
 	for (int i = 1; i <= n; i++)
 	{
 		scanf("%d", &p[i]);
+		f[i] = i;
 	}
 	for (int i = 0; i < m; i++)
 	{
-		scanf("%d%d%d", &x[i], &y[i], &z[i]);
+		scanf("%d%d%d", &a[i].second.first, &a[i].second.second, &a[i].first);
 	}
-	int L = 0;
-	int R = 1e9 + 7;
-	while (L < R - 1)
+	sort(a, a + m);
+	int j = m;
+	for (int i = 1; i <= n; i++)
 	{
-		int M = (L + R) / 2;
-		if (ok(M))
+		for (;F(i) != F(p[i]);)
 		{
-			L = M;
-		}
-		else
-		{
-			R = M;
+			j--;
+			U(a[j].second.first, a[j].second.second);
 		}
 	}
-	if (L > 1e9)
-	{
-		L = -1;
-	}
-	printf("%d\n", L);
+	printf("%d\n", j == m ? -1 : a[j].first);
 	return 0;
 }
