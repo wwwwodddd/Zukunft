@@ -1,0 +1,1 @@
+print (eval(raw_input().replace(' ','+'))+1)/2

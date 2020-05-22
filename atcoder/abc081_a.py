@@ -1,0 +1,1 @@
+print raw_input().count('1')
