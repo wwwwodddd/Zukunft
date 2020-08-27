@@ -5,11 +5,7 @@ int n, m;
 long long ans;
 pair<int, pair<int, int> > a[10020];
 int F(int x) {
-	if (f[x] == x) {
-		return x;
-	}
-	f[x] = F(f[x]);
-	return f[x];
+	return f[x] != x ? f[x] = F(f[x]) : x;
 }
 int main() {
 	cin >> n >> m;
