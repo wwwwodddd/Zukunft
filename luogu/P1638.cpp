@@ -5,32 +5,22 @@ int a[1000020];
 int c[10020], cnt;
 int main() {
 	scanf("%d%d", &n, &m);
-	for (int i = 0; i < n; i++) {
-		scanf("%d", &a[i]);
+	for (int i = 0, j = 0; j < n; j++) {
+		scanf("%d", &a[j]);
 	}
-	int ansl = 0, ansr = n;
-	int l = 0, r = 0;
-	while (true) {
-		if (cnt < m) {
-			if (r == n) {
-				break;
-			} else {
-				if (c[a[r++]]++ == 0) {
-					cnt++;
-				}
-			}
-		} else {
-			if (--c[a[l++]] == 0) {
-				cnt--;
-			}
+	int ansi = 0, ansj = n;
+	for (int i = 0, j = 0; i < n;) {
+		while (j < n && cnt < m) {
+			cnt += !c[a[j++]]++;
 		}
 		if (cnt == m) {
-			if (ansr - ansl > r - l) {
-				ansr = r;
-				ansl = l;
+			if (ansj - ansi > j - i) {
+				ansj = j;
+				ansi = i;
 			}
 		}
+		cnt -= !--c[a[i++]];
 	}
-	printf("%d %d\n", ansl + 1, ansr);
+	printf("%d %d\n", ansi + 1, ansj);
 	return 0;
 }
