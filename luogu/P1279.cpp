@@ -11,8 +11,6 @@ int main() {
 		for (int j = 0; j <= m; j++) {
 			if (i == 0 || j == 0) {
 				f[i][j] = (i + j) * k;
-			} else if (a[i] == b[j]) {
-				f[i][j] = f[i - 1][j - 1];
 			} else {
 				f[i][j] = min(f[i - 1][j - 1] + abs(a[i] - b[j]), min(f[i - 1][j], f[i][j - 1]) + k);
 			}
