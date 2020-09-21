@@ -3,10 +3,10 @@ using namespace std;
 int n, A, B, C;
 int a[10000020];
 int main() {
-	scanf("%d%d%d%d%d",&n,&A,&B,&C,a+1);
-	for (int i=2;i<=n;i++)
-		a[i] = ((long long)a[i-1] * A + B) % 100000001;
-	for (int i=1;i<=n;i++)
+	scanf("%d%d%d%d%d", &n, &A, &B, &C, a + 1);
+	for (int i = 2; i <= n; i++)
+		a[i] = ((long long) a[i - 1] * A + B) % 100000001;
+	for (int i = 1; i <= n; i++)
 		a[i] = a[i] % C + 1;
 	a[0] = a[n];
 	double ans = 0;
