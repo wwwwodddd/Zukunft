@@ -86,8 +86,6 @@ void dfs(int x, int y)
 
 int main()
 {
-	freopen("snowcow.in", "r", stdin);
-	freopen("snowcow.out", "w", stdout);
 	scanf("%d%d", &n, &m);
 	for (int i = 1; i < n; i++)
 	{
@@ -113,15 +111,15 @@ int main()
 					continue;
 				}
 			}
+			set<pair<int, int> >::iterator it = op[y].upper_bound(make_pair(L[x], R[x]));
 			while (true)
 			{
-				set<pair<int, int> >::iterator it = op[y].upper_bound(make_pair(L[x], R[x]));
 				if (it == op[y].end() || R[x] <= it->first)
 				{
 					break;
 				}
 				change(1, 0, n, it->first, it->second, -1);
-				op[y].erase(it);
+				op[y].erase(it++);
 			}
 			change(1, 0, n, L[x], R[x], 1);
 			op[y].insert(make_pair(L[x], R[x]));
