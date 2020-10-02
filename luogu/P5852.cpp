@@ -4,49 +4,37 @@ int n, m;
 vector<int> a[100020];
 int L[100020];
 int R[100020];
-int s[100020], ss;
-int sz[100020];
-char z[100020];
+int ss;
 set<pair<int, int> > op[100020];
-
-long long tsz[400020];
 long long sm[400020];
-int tmd[400020];
-void build(int x, int l, int r)
+int ad[400020];
+void add(int x, int l, int r, int v)
 {
-	if (l + 1 == r)
-	{
-		tsz[x] = 1;
-		return;
-	}
-	int m = (l + r) / 2;
-	build(2 * x, l, m);
-	build(2 * x + 1, m, r);
-	tsz[x] = tsz[2 * x] + tsz[2 * x + 1];
+	ad[x] += v;
+	sm[x] += v * (r - l);
 }
-void push(int x)
+void push(int x, int l, int r)
 {
-	tmd[2 * x] += tmd[x];
-	sm[2 * x] += tsz[2 * x] * tmd[x];
-	tmd[2 * x + 1] += tmd[x];
-	sm[2 * x + 1] += tsz[2 * x + 1] * tmd[x];
-	tmd[x] = 0;
+	int m = (l + r) / 2;
+	if (ad[x] > 0)
+	{
+		add(2 * x, l, m, ad[x]);
+		add(2 * x + 1, m, r, ad[x]);
+		ad[x] = 0;
+	}
 }
 void change(int x, int l, int r, int L, int R, int v)
 {
-	// if (x == 1)
-	// printf("change %d %d %d %d %d %d\n", x, l, r, L, R, v);
 	if (r <= L || R <= l)
 	{
 		return;
 	}
 	if (L <= l && r <= R)
 	{
-		tmd[x] += v;
-		sm[x] += tsz[x] * v;
+		add(x, l, r, v);
 		return;
 	}
-	push(x);
+	push(x, l, r);
 	int m = (l + r) / 2;
 	change(2 * x, l, m, L, R, v);
 	change(2 * x + 1, m, r, L, R, v);
@@ -54,7 +42,6 @@ void change(int x, int l, int r, int L, int R, int v)
 }
 long long query(int x, int l, int r, int L,int R)
 {
-	// printf("query %d %d %d %d %d\n", x, l, r, L, R);
 	if (r <= L || R <= l)
 	{
 		return 0;
@@ -63,27 +50,22 @@ long long query(int x, int l, int r, int L,int R)
 	{
 		return sm[x];
 	}
-	push(x);
+	push(x, l, r);
 	int m = (l + r) / 2;
 	return query(2 * x, l, m, L, R) + query(2 * x + 1, m, r, L, R);
 }
-
 void dfs(int x, int y)
 {
-	L[x] = ss;
-	s[ss++] = x;
-	sz[x] = 1;
+	L[x] = ss++;
 	for (int i : a[x])
 	{
 		if (i != y)
 		{
 			dfs(i, x);
-			sz[x] += sz[i];
 		}
 	}
 	R[x] = ss;
 }
-
 int main()
 {
 	scanf("%d%d", &n, &m);
@@ -95,7 +77,6 @@ int main()
 		a[y].push_back(x);
 	}
 	dfs(1, 0);
-	build(1, 0, n);
 	for (int i = 0; i < m; i++)
 	{
 		int x, y, o;
@@ -111,7 +92,7 @@ int main()
 					continue;
 				}
 			}
-			set<pair<int, int> >::iterator it = op[y].upper_bound(make_pair(L[x], R[x]));
+			it = op[y].upper_bound(make_pair(L[x], R[x]));
 			while (true)
 			{
 				if (it == op[y].end() || R[x] <= it->first)
