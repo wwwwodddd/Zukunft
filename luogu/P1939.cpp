@@ -31,7 +31,7 @@ int main() {
 	for (int tt = 0; tt < t; tt++) {
 		long long n;
 		cin >> n;
-		cout << F(n) << endl;		
+		cout << F(n) << endl;
 	}
-	return 0;	
+	return 0;
 }
