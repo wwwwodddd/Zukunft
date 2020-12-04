@@ -11,7 +11,7 @@ int main() {
 	}
 	for (int i = 1; i <= n; i++) {
 		if (d[i] & 1) {
-			z++;	
+			z++;
 		}
 	}
 	if (z == 0) {

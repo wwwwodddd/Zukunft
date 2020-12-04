@@ -16,5 +16,6 @@ int main() {
 	if (n > 1) {
 		ans *= 3;
 	}
-	cout << ans << endl;	
+	cout << ans << endl;
+	return 0;
 }

@@ -29,7 +29,7 @@ int main() {
 	for (int i = 1; i <= n; i++) {
 		if (d[i] & 1) {
 			if (start == -1) {
-				start = i;			
+				start = i;
 			}
 			cnt++;
 		}
@@ -41,7 +41,7 @@ int main() {
 	for (int i = 1; i <= n; i++) {
 		if (d[i] > 0) {
 			if (start == -1) {
-				start = i;			
+				start = i;
 			}
 		}
 	}

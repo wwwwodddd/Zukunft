@@ -15,7 +15,7 @@ int main() {
 				printf("%d %d\n", a[i] - (s ^ a[i]), i + 1);
 				a[i] = s ^ a[i];
 				for (int j = 0; j < n; j++) {
-					printf("%d%c", a[j], j == n - 1 ? '\n' :' ');					
+					printf("%d%c", a[j], j == n - 1 ? '\n' :' ');
 				}
 				break;
 			}
