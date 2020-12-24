@@ -1,0 +1,1 @@
+print(eval('10**'+input().replace(' ','+')))
