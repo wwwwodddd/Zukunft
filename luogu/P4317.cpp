@@ -1,34 +1,49 @@
-#include<stdio.h>
+#include <bits/stdc++.h>
 typedef long long ll;
-ll p=10000007;
-ll c[60][60],n;
-ll pw(ll x,ll y)
+const int p = 10000007;
+ll c[50][50], n;
+ll pw(ll x, ll y)
 {
-	ll z=1;
-	for(;y;y>>=1,x=x*x%p)
-		if(y&1)
-			z=z*x%p;
-	return z;
+	ll re = 1;
+	for (; y > 0; y >>= 1)
+	{
+		if (y & 1)
+		{
+			re = re * x % p;
+		}
+		x = x * x % p;
+	}
+	return re;
 }
-ll F(int x,ll n)
+ll F(int x, ll n)
 {
-	ll ans=0;
-	for(int i=55;i--;)
-		if(n>>i&1&&x>=0)
-			ans+=c[i][x--];
-	return ans;
+	ll z = 0;
+	for (int i = 50; i-- && x >= 0;)
+	{
+		if (n >> i & 1)
+		{
+			z += c[i][x--];
+		}
+	}
+	return z;
 }
 int main()
 {
-	for(int i=0;i<60;i++)
+	for (int i = 0; i < 50; i++)
 	{
-		c[i][0]=1;
-		for(int j=1;j<=i;j++)
-			c[i][j]=c[i-1][j]+c[i-1][j-1];
+		c[i][0] = 1;
+		for (int j = 1; j <= i; j++)
+		{
+			c[i][j] = c[i - 1][j] + c[i - 1][j - 1];
+		}
 	}
-	scanf("%lld",&n),n++;
-	ll ans=1;
-	for(int i=2;i<55;i++)
-		ans=ans*pw(i,F(i,n))%p;
-	printf("%lld",ans);
+	scanf("%lld", &n);
+	n++;
+	ll z = 1;
+	for (int i = 2; i < 50; i++)
+	{
+		z = z * pw(i, F(i, n)) % p;
+	}
+	printf("%lld\n", z);
+	return 0;
 }
