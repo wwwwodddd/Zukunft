@@ -1,0 +1,1 @@
+print(90-int(input()))
