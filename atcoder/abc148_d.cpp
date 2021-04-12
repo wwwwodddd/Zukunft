@@ -1,15 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n, z, h, l;
+int n, x, c;
 int main()
 {
 	scanf("%d", &n);
 	for (int i = 0; i < n; i++)
 	{
-		scanf("%d", &h);
-		z += max(h - l, 0);
-		l = h;
+		scanf("%d", &x);
+		if (x == c + 1)
+		{
+			c++;
+		}
 	}
-	printf("%d\n", z);
+	printf("%d\n", c > 0 ? n - c : -1);
 	return 0;
 }
