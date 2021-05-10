@@ -20,8 +20,8 @@ int main() {
 		for (int i = 0; i < n; i++) {
 			scanf("%lld%lld%lld", &s[i], &e[i], &d[i]);
 		}
-		long long L = -1; // <=LµÄÎ»ÖÃÃ»ÓÐÆæÊý¸öÈË 
-		long long R = 1e10; // <= RµÄÎ»ÖÃÒ»¶¨ÓÐÆæÊý¸öÈË 
+		long long L = -1; // <=Lçš„ä½ç½®æ²¡æœ‰å¥‡æ•°ä¸ªäºº 
+		long long R = 1e10; // <= Rçš„ä½ç½®ä¸€å®šæœ‰å¥‡æ•°ä¸ªäºº 
 		if (!ok(R)) {
 			cout << "Poor QIN Teng:(" << endl;
 			continue;
