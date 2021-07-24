@@ -1,0 +1,1 @@
+print(['No', 'Yes'][sorted([input(), input(), input(), input()]) == ['2B', '3B', 'H', 'HR']])
