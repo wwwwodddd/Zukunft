@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n, m, x, y, f[100020];
+int n, m, x, y;
+long long f[10000020];
 int main() {
 	scanf("%d%d", &m, &n);
 	for (int i = 0; i < n; i++) {
@@ -9,6 +10,6 @@ int main() {
 			f[j] = max(f[j], f[j - x] + y);
 		}
 	}
-	printf("%d\n", f[m]);
+	printf("%lld\n", f[m]);
 	return 0;
 }
