@@ -1,0 +1,1 @@
+print(['DIFFERENT','SAME'][len(set(input()))==1])

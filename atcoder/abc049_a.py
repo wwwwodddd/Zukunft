@@ -1,0 +1,1 @@
+print(['consonant','vowel'][input()in'aeiou'])

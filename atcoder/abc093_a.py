@@ -1,0 +1,1 @@
+print('YNeos'[sorted(input())!=list('abc')::2])

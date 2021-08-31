@@ -1,0 +1,1 @@
+print('WAAC'[input()=='Hello,World!'::2])

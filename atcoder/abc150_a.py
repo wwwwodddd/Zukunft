@@ -1,0 +1,1 @@
+print('YNeos'[eval(input().replace(' ','*500<'))::2])

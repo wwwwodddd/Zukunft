@@ -1,0 +1,1 @@
+print(['unsafe','safe'][eval(input().replace(' ','>'))])

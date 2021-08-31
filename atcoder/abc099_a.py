@@ -1,0 +1,1 @@
+print('AB'+'CD'[len(input())>3])
