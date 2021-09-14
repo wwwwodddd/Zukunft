@@ -1,0 +1,1 @@
+print(''.join(list(map(lambda x:chr(96+int(x)),input().split()))))
