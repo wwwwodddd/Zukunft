@@ -1,0 +1,1 @@
+print(max(['Sunday','Saturday','Friday','Thursday','Wednesday','Tuesday','Monday'].index(input())-1,0))
