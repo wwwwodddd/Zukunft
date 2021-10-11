@@ -1,35 +1,78 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+int t, a, b, n;
+string s;
 int main()
 {
-    int t;
-    cin>>t;
-    while(t--)
-    {
-        int a,b,n;
-        cin>>a>>b;
-        n=a+b;
-        string s;
-        cin>>s;
-        for(int i=0; i<n; i++){
-            if(s[i]=='?')s[i]=s[n-i-1];
-        }
-        a-=count(s.begin(),s.end(),'0');
-        b-=count(s.begin(),s.end(),'1');
-        for(int i=0;i<=n/2;i++){
-            if(i!=n-i-1&&s[i]=='?'){
-             if(a>1)s[i]=s[n-i-1]='0', a-=2;
-                else if(b>1)s[i]=s[n-i-1]='1', b-=2;
-            }
-            else if(s[i]=='?'){
-                if(a)s[i]='0',a--;
-                else s[i]='1',b--;
-            }
-        }
-        string v=s;
-        reverse(v.begin(),v.end());
-        if(v==s&&a==0&&b==0)cout<<s<<'\n';
-        else cout<<"-1\n";
-    }
-    return 0;
+	cin >> t;
+	for (int tt = 0; tt < t; tt++)
+	{
+		cin >> a >> b >> s;
+		n = a + b;
+		for (int i = 0; i < n; i++)
+		{
+			if (s[i] == '?')
+			{
+				s[i] = s[n - 1 - i];
+			}
+		}
+		for (int i = 0; i < n; i++)
+		{
+			if (s[i] != s[n - 1 - i])
+			{
+				a = -1;
+				b = -1;
+			}
+			if (s[i] == '0')
+			{
+				a--;
+			}
+			else if (s[i] == '1')
+			{
+				b--;
+			}
+		}
+		for (int i = 0; i <= n / 2; i++)
+		{
+			if (s[i] == '?')
+			{
+				if (i < n - i - 1)
+				{
+					if (a >= 2)
+					{
+						s[i] = '0';
+						s[n - i - 1] = '0';
+						a -= 2;
+					}
+					else if (b >= 2)
+					{
+						s[i] = '1';
+						s[n - i - 1] = '1';
+						b -= 2;
+					}
+				}
+				else
+				{
+					if (a >= 1)
+					{
+						s[i] = '0';
+						a -= 1;
+					}
+					else if (b >= 1)
+					{
+						s[i] = '1';
+						b -= 1;
+					}
+				}
+			}
+		}
+		if (a == 0 && b == 0)
+		{
+			cout << s << endl;
+		}
+		else
+		{
+			cout << -1 << endl;
+		}
+	}
 }
