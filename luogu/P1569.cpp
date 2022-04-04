@@ -13,7 +13,7 @@ int main()
 		s += x;
 		if (s >= 0)
 		{
-			*upper_bound(f, f + n, s) = s;
+			*upper_bound(f, f + n + 1, s) = s;
 		}
 	}
 	if (s < 0)
