@@ -8,13 +8,22 @@ int main()
 	{
 		scanf("%d", &a[i]);
 	}
-	if (a[0] == 1)
+	int i = 0, j = n - 1, c = 0;
+	for (; i < n; i++)
 	{
-		cout << "No" << endl;
+		if (i % 2 != a[i])
+		{
+			c = i - 1;
+			break;
+		}
 	}
-	else
+	for (; j >= i; j--)
 	{
-		
+		if (a[j] != a[j + 1])
+		{
+			c--;
+		}
 	}
+	puts(c >= 0 ? "Yes" : "No");
 	return 0;
 }
