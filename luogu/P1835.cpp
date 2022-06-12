@@ -13,6 +13,7 @@ void gao(int p)
 int main()
 {
 	scanf("%lld%lld", &l, &r);
+	l = max(l, 2LL); // !!!!!!
 	for (int i = 2; i <= r / i; i++)
 	{
 		if (!v[i])

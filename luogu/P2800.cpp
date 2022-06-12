@@ -9,7 +9,7 @@ int main()
 	for (int i = 1; i <= n; i++)
 	{
 		scanf("%d", &x);
-		f[i%3] = min(g[(i-1)%3], g[(i+1)%3]);		
+		f[i%3] = min(g[(i-1)%3], g[(i+1)%3]);
 		g[i%3] = min(f[(i-1)%3], g[(i-1)%3]) + x;
 	}
 	printf("%d\n", min(f[n%3], g[n%3]));

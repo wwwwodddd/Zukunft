@@ -4,7 +4,7 @@ char s[10020];
 int a[10020];
 int p = 19260817;
 int read() {
-	// ¶ÁÈëÒ»¸öÊý×Ömod pµÄ½á¹û 
+	// è¯»å…¥ä¸€ä¸ªæ•°å­—mod pçš„ç»“æžœ 
 	scanf("%s", s);
 	int n = strlen(s);
 	for (int i = 0; i < n; i++) {
