@@ -1,8 +1,9 @@
 #include <bits/stdc++.h>
+#include <unordered_map>
 using namespace std;
 const int p = 1000000007;
 int n, m, v;
-map<int, int> f;
+unordered_map<int, int> f;
 int pw(int x, int y)
 {
 	int re = 1;
@@ -44,7 +45,7 @@ int main()
 {
 	cin >> n >> m;
 	v = pw(n - 1, p - 2);
-	f[1] = 1;
+	f[0] = 0;
 	cout << F(m) << endl;
 	return 0;
 }
