@@ -7,21 +7,17 @@ int C(int n, int m)
 {
 	return (n & m) == m;
 }
-map<pair<int, int>, int> g;
 int G(int n, int m) // >= m
 {
-	m = max(m, 0);
-	pair<int, int> u = make_pair(n, m);
-	if (g.find(u) == g.end())
+	if (m < 0)
 	{
-		int s = 0;
-		for (int i = m; i <= n; i++)
-		{
-			s = (s + C(n, i)) % 2;
-		}
-		g[u] = s;
+		return n == 0;
 	}
-	return g[u];
+	if (m > n)
+	{
+		return 0;
+	}
+	return C(n - 1, m - 1);
 }
 int main()
 {
@@ -32,9 +28,9 @@ int main()
 	}
 	for (int i = 1; i <= n; i++)
 	{
-		long long x = b[i];
+		long long x = b[i], y = 0;
 		int j = i;
-		while (x < (1 << 20))
+		while (y < 20 && x << y < 1 << 20)
 		{
 			int u = n - 1 - (j - i);
 			int v = k;
@@ -50,12 +46,11 @@ int main()
 			}
 			if (G(u, v))
 			{
-				// cout << i << " " << j << " " << x << " " << u << " " << v << " " << G(u, v) << endl;
-				z[x] ^= 1;
+				z[x << y] ^= 1;
 			}
 			if (j < n)
 			{
-				x *= 1 << b[++j];
+				y += b[++j];
 			}
 			else
 			{
