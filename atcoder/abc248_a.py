@@ -1,0 +1,1 @@
+print(45-sum(map(int,input())))
