@@ -20,7 +20,7 @@ int main()
 			b[j] = a[j] % i;
 			cnt += a[j] / i;
 		}
-		sort(b, b + n);
+		sort(b, b + n, greater<int>());
 		int sum = 0;
 		if (cnt >= k)
 		{
@@ -29,11 +29,7 @@ int main()
 		else if (cnt >= k / 2)
 		{
 			sum = (cnt - k / 2) * i;
-			if (n - (k - cnt) < 0)
-			{
-				continue;
-			}
-			for (int j = n - (k - cnt); j < n; j++)
+			for (int j = 0; j < k - cnt; j++)
 			{
 				sum += b[j];
 			}
@@ -43,3 +39,7 @@ int main()
 	cout << ans << endl;
 	return 0;
 }
+/*
+5 30
+73 1 1 1 1
+*/
