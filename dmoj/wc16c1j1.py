@@ -1,0 +1,1 @@
+print('sp%sky' % ('o' * int(input())))
