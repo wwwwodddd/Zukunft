@@ -1,0 +1,1 @@
+print_int(Scanf.scanf "%d" (fun x -> (x + 2) / 5 * 5))

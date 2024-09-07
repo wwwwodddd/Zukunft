@@ -1,0 +1,1 @@
+print_endline(String.uppercase_ascii(read_line()))
