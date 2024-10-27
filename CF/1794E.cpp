@@ -1,12 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-typedef long long ll;
 int n, b, p;
 int c[200020];
-ll f[200020];
+long long f[200020];
 vector<int> a[200020];
 set<int> z;
-set<ll> g;
+set<long long> g;
 void dfs1(int x, int y)
 {
 	f[x] = 1;
@@ -38,14 +37,13 @@ void gao(int base, int mod)
 {
 	b = base;
 	p = mod;
-	ll s = 0, t = 1;
+	long long s = 0, t = 1;
 	for (int i = n; i >= 0; i--)
 	{
 		s = (s * b + c[i]) % p;
 	}
 	for (int i = 1; i <= n; i++)
 	{
-		z.insert(i);
 		g.insert((s + t) % p);
 		t = t * b % p;
 	}
@@ -67,6 +65,10 @@ int main()
 		cin >> x >> y;
 		a[x].push_back(y);
 		a[y].push_back(x);
+	}
+	for (int i = 1; i <= n; i++)
+	{
+		z.insert(i);
 	}
 	gao(131, 1000000007);
 	gao(1313, 1 << 30);
