@@ -1,0 +1,5 @@
+n = int(input())
+a = list(map(int, input().split()))
+s = sum(a)
+m = max(a)
+print(max(m * 2, s))
