@@ -1,0 +1,1 @@
+print(['Unlikely', 'Likely'][input() == '121'])

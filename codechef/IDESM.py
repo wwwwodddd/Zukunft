@@ -1,0 +1,1 @@
+print(['NO', 'YES'][input() == '15'])

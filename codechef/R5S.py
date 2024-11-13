@@ -1,0 +1,1 @@
+print(['NO', 'YES'][sum(map(int, input().split())) >= 2000])

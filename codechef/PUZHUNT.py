@@ -1,0 +1,1 @@
+print(['No', 'Yes'][6 <= int(input()) <= 8])

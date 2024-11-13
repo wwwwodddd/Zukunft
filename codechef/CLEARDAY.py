@@ -1,0 +1,1 @@
+print(7 - sum(map(int, input().split())))

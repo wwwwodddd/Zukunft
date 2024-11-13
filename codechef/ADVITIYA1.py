@@ -1,0 +1,1 @@
+print(['WAITING FOR ADVITIYA', 'ADVITIYA'][int(input()) > 15])

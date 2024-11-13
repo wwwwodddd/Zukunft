@@ -1,0 +1,1 @@
+print(['CSK', 'RCB'][eval(input().replace(' ','>=18+'))])

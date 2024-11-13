@@ -1,0 +1,1 @@
+print(['NO', 'YES'][eval(input().replace(' ', '>='))])

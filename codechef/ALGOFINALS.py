@@ -1,0 +1,1 @@
+print(['NO', 'YAY'][int(input()) == 17])

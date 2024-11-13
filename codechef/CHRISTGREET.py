@@ -1,0 +1,1 @@
+print(['ORDINARY', 'CHRISTMAS'][input() == '25'])
