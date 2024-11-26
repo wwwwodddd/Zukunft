@@ -1,6 +1,3 @@
 for t in range(int(input())):
 	n, m = map(int, input().split())
-	if m < n:
-		print(n - m)
-	else:
-		print(min(m % n, n - m % n))
+	print(['YES', 'NO'][(n - m) % 2])

@@ -1,0 +1,1 @@
+print(['no', 'yes'][int(input()) % 6 in [0, 1, 3]])
