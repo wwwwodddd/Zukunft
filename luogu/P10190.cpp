@@ -12,8 +12,8 @@ namespace cao
 	vector<ll> yy;
 	vector<ll> pos;
 	vector<ll> neg;
-	vector<pair<ll, ll> > up;
-	vector<pair<ll, ll> > dn;
+	vector<pair<ll, ll>> up;
+	vector<pair<ll, ll>> dn;
 	ll yc;
 	double xm(double x1, double y1, double x2, double y2)
 	{
@@ -30,26 +30,35 @@ namespace cao
 	bool checkmax(ll y) // neg up
 	{
 		yc = y;
-		sort(up.begin(), up.end(), cmpmax);
+		// assert(up.size() == neg.size());
+		multiset<ll> negs(neg.begin(), neg.end());
 		for (int i = 0; i < up.size(); i++)
 		{
-			if (up[i].second - up[i].first * neg[i] > y)
+			ll kk = (up[i].second - y) / up[i].first;
+			auto it = negs.lower_bound(kk);
+			if (it == negs.end())
 			{
 				return false;
 			}
+			negs.erase(it);
 		}
 		return true;
 	}
 	bool checkmin(ll y) // pos dn
 	{
 		yc = y;
-		sort(dn.begin(), dn.end(), cmpmin);
+		// sort(dn.begin(), dn.end(), cmpmin);
+		multiset<ll> poss(pos.begin(), pos.end());
 		for (int i = 0; i < dn.size(); i++)
 		{
-			if (dn[i].second - dn[i].first * pos[i] < y)
+			ll kk = (dn[i].second - y) / dn[i].first;
+			auto it = poss.upper_bound(kk);
+			if (it == poss.begin())
 			{
 				return false;
 			}
+			it--;
+			poss.erase(it);
 		}
 		return true;
 	}
