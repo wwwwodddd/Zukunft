@@ -1,0 +1,1 @@
+print(int(eval(input().replace(' ','>= 10 or 20 <='))))

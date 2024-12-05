@@ -1,0 +1,1 @@
+print(['NO', 'YES'][input().replace(' ','').lower() == input().replace(' ','').lower()])

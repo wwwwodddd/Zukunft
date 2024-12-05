@@ -1,0 +1,1 @@
+print('%.9f' % eval(input().replace(' ', '/')))

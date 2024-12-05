@@ -1,0 +1,1 @@
+print('%.3f' % (eval(input().replace(' ', '*')) / 10))

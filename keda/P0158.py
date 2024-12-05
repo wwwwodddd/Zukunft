@@ -1,0 +1,1 @@
+print(['NO', 'YES'][ord(input()[0]) % 2])

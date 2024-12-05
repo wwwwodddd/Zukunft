@@ -1,0 +1,1 @@
+print('ke' + 'da' * int(input()))

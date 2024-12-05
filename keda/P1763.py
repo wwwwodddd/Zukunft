@@ -1,0 +1,1 @@
+print('%.2f' % min(*map(float, input().split())))

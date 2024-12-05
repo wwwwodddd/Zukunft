@@ -1,0 +1,1 @@
+print(int(len(input()) == 2))

@@ -1,0 +1,1 @@
+print('%.3f' % (float(input()) / 1000))

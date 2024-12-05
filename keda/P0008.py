@@ -1,0 +1,1 @@
+print(['FALSE', 'TRUE'][int(input()) in [153, 370, 371, 407]])

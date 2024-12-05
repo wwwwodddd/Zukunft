@@ -1,0 +1,1 @@
+print('%.2f' % (sum(float(input()) for i in range(12)) / 12))

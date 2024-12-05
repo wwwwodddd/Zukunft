@@ -1,0 +1,1 @@
+print(['Black', 'White'][sum(map(ord, input())) % 2])

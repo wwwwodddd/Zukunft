@@ -1,0 +1,1 @@
+print('%.2f' % max(*map(float, input().split())))

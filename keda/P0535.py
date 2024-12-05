@@ -1,0 +1,1 @@
+print(['YES', 'NO'][input() in '135'])
