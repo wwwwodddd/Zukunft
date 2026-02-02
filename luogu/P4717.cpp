@@ -2,7 +2,7 @@
 using namespace std;
 const int mod = 998244353;
 const long long inv2 = 499122177;
-int n;
+int n, m;
 int A[131073];
 int B[131073];
 int a[131073];
@@ -37,21 +37,37 @@ void xor1(int &x, int &y)
 }
 void gao(int a[], void op(int &, int &))
 {
-	for (int i = 1; i < n; i <<= 1)
+	for (int j = 0; j < m; j++)
 	{
-		for (int j = 0; j < n; j++)
+		for (int i = 0; i < n; i++)
 		{
-			if (j & i)
+			if (i >> j & 1)
 			{
-				op(a[j ^ i], a[j]);
+				op(a[i ^ 1 << j], a[i]);
 			}
 		}
 	}
 }
+void work(void op0(int &, int &), void op1(int &, int &))
+{
+	memcpy(a, A, sizeof a);
+	memcpy(b, B, sizeof b);
+	gao(a, op0);
+	gao(b, op0);
+	for (int i = 0; i < n; i++)
+	{
+		a[i] = (long long)a[i] * b[i] % mod;
+	}
+	gao(a, op1);
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d%c", a[i], i == n - 1 ? '\n' : ' ');
+	}
+}
 int main()
 {
-	scanf("%d", &n);
-	n = 1 << n;
+	scanf("%d", &m);
+	n = 1 << m;
 	for (int i = 0; i < n; i++)
 	{
 		scanf("%d", &A[i]);
@@ -60,44 +76,8 @@ int main()
 	{
 		scanf("%d", &B[i]);
 	}
-	memcpy(a, A, sizeof a);
-	memcpy(b, B, sizeof b);
-	gao(a, );
-	gao(b, or0);
-	for (int i = 0; i < n; i++)
-	{
-		a[i] = (long long)a[i] * b[i] % mod;
-	}
-	gao(a, or1);
-	for (int i = 0; i < n; i++)
-	{
-		printf("%d%c", a[i], i == n - 1 ? '\n' : ' ');
-	}
-	memcpy(a, A, sizeof a);
-	memcpy(b, B, sizeof b);
-	gao(a, and0);
-	gao(b, and0);
-	for (int i = 0; i < n; i++)
-	{
-		a[i] = (long long)a[i] * b[i] % mod;
-	}
-	gao(a, and1);
-	for (int i = 0; i < n; i++)
-	{
-		printf("%d%c", a[i], i == n - 1 ? '\n' : ' ');
-	}
-	memcpy(a, A, sizeof a);
-	memcpy(b, B, sizeof b);
-	gao(a, xor0);
-	gao(b, xor0);
-	for (int i = 0; i < n; i++)
-	{
-		a[i] = (long long)a[i] * b[i] % mod;
-	}
-	gao(a, xor1);
-	for (int i = 0; i < n; i++)
-	{
-		printf("%d%c", a[i], i == n - 1 ? '\n' : ' ');
-	}
+	work(or0, or1);
+	work(and0, and1);
+	work(xor0, xor1);
 	return 0;
 }
