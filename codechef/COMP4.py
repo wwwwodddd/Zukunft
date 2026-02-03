@@ -1,0 +1,1 @@
+print(16000 // 2 ** int(input()))

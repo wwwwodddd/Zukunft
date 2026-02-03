@@ -1,0 +1,1 @@
+print(min(1000, 200 * int(input())))

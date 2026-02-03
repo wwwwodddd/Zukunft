@@ -1,0 +1,1 @@
+print((28 - int(input())) // 4)

@@ -1,0 +1,1 @@
+print(['Access denied', 'Welcome to Web Club!'][input() == 'WECNITK'])

@@ -1,0 +1,1 @@
+print(max(15 - int(input()), -1))

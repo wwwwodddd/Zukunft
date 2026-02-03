@@ -1,0 +1,1 @@
+print(180 - sum(map(int, input().split())))

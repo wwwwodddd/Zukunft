@@ -1,0 +1,1 @@
+print(31 * int(input()))
