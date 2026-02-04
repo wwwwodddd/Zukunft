@@ -1,25 +1,59 @@
-#include<stdio.h>
-#include<iostream>
-#include<stdlib.h>
-#include<vector>
-#include<algorithm>
+#include <iostream>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <algorithm>
 using namespace std;
-vector<int>a;
-int b[1020];
+int n;
+char s[100];
 int main()
 {
-    int t,n,k;
-    for(cin>>t;t--;)
+    while (scanf("%s%d", s, &n) != EOF)
     {
-        a.clear();
-        cin>>n>>k;
-        for(int i=0;i<n;i++)
-            cin>>b[i];
-        for(int i=0;i<n;i++)
-            for(int j=i+1;j<n;j++)
-                a.push_back(abs(b[i]-b[j]));
-        sort(a.begin(),a.end());
-        unique(a.begin(),a.end());
-        cout<<a[k-1]<<endl;
-    }    
+        n &= 7;
+        int l = strlen(s);
+        if (n >= 4)
+        {
+            n -= 4;
+            reverse(s, s + l);
+        }
+        if (n == 0)
+        {
+            printf("%s\n", s);
+        }
+        else if (n == 1)
+        {
+            for (int i = 0; i < l; i++)
+            {
+                for (int j = 0; j < l - i - 1; j++)
+                {
+                    printf(" ");
+                }
+                printf("%c\n", s[l - i - 1]);
+            }
+        }
+        else if (n == 2)
+        {
+            for (int i = 0; i < l; i++)
+            {
+                for (int j = 0; j < l / 2; j++)
+                {
+                    printf(" ");
+                }
+                printf("%c\n", s[l - i - 1]);
+            }
+        }
+        else if (n == 3)
+        {
+            for (int i = 0; i < l; i++)
+            {
+                for (int j = 0; j < i; j++)
+                {
+                    printf(" ");
+                }
+                printf("%c\n", s[l - i - 1]);
+            }
+        }
+    }
+    return 0;
 }
