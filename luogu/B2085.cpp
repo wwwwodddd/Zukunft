@@ -13,7 +13,7 @@ bool isPrime(int x)
 }
 int main()
 {
-int l;
+	int l;
 	scanf("%d", &l);
 	for (int i = 2;; i++)
 	{
