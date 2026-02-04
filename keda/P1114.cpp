@@ -7,11 +7,11 @@ long long c[14020];
 int T = 9, B = 1;
 int main()
 {
-	scanf("%*d");
 	for (int i = 0; i < T; i++)
 	{
 		B = B * 10;
 	}
+	memset(s, 0, sizeof s);
 	scanf("%s", s);
 	int la = strlen(s);
 	reverse(s, s + la);
@@ -28,6 +28,7 @@ int main()
 	}
 	la = (la + T - 1) / T;
 
+	memset(s, 0, sizeof s);
 	scanf("%s", s);
 	int lb = strlen(s);
 	reverse(s, s + lb);

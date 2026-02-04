@@ -1,0 +1,4 @@
+x, y, z = 1, 1, 2
+for i in range(int(input())):
+	x, y, z = y, z, (x + y + z) % 1000000007
+print(x)

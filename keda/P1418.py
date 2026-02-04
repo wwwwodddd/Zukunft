@@ -1,0 +1,1 @@
+print(''.join(chr((ord(i) - 95) % 26 + 97)for i in input()))

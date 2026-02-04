@@ -6,6 +6,8 @@ int n, m, a[120][2020];
 ll z = 1, s[120], f[120][220];
 int main()
 {
+	freopen("meal.in", "r", stdin);
+	freopen("meal.out", "w", stdout);
 	scanf("%d%d", &n, &m);
 	for (int i = 0; i < n; i++)
 	{
@@ -20,19 +22,19 @@ int main()
 	for (int k = 0; k < m; k++)
 	{
 		memset(f, 0, sizeof f);
-		f[0][0] = 1;
+		f[0][n] = 1;
 		for (int i = 0; i < n; i++)
 		{
 			for (int j = -i; j <= i; j++)
 			{
-				f[i + 1][j] = (f[i + 1][j] + f[i][j]) % mod;
-				f[i + 1][j + 1] = (f[i + 1][j + 1] + f[i][j] * a[i][k]) % mod;
-				f[i + 1][j - 1] = (f[i + 1][j - 1] + f[i][j] * (s[i] - a[i][k])) % mod;
+				f[i + 1][n + j] = (f[i + 1][n + j] + f[i][n + j]) % mod;
+				f[i + 1][n + j + 1] = (f[i + 1][n + j + 1] + f[i][n + j] * a[i][k]) % mod;
+				f[i + 1][n + j - 1] = (f[i + 1][n + j - 1] + f[i][n + j] * (s[i] - a[i][k])) % mod;
 			}
 		}
 		for (int j = 1; j <= n; j++)
 		{
-			z = (z + mod - f[n][j]) % mod;
+			z = (z + mod - f[n][n + j]) % mod;
 		}
 	}
 	printf("%lld\n", z);
