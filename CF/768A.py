@@ -1,0 +1,5 @@
+n = int(input())
+a = list(map(int, input().split()))
+ax = max(a)
+an = min(a)
+print(sum(an < i < ax for i in a))
